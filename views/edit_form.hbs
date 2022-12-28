@@ -1,0 +1,93 @@
+<div class="cotainer">
+    <div class="row mt-5 ">
+        <div class="col-md-8 offset-md-2">
+            <form action="/edit" method="post" enctype='multipart/form-data'>
+                <div class="form-outline mb-4">
+                    <input type="text" id="form4Example1" value="{{content.title}}" class="form-control" name="title"
+                        required />
+                    <label class="form-label" for="form4Example1">head line</label>
+                </div>
+                <input type="hidden" name="id" id="hidden" color="{{content.color}}" value="{{content._id}}" >
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                    <textarea class="form-control" id="form4Example3" name="content" rows="4"
+                        required>{{content.content}}</textarea>
+                    <label class="form-label" for="form4Example3">content</label>
+                </div>
+                {{#if content}}
+                <div>
+                    <img src="/images/content/{{content._id}}.jpg" width="100" height="200" alt="no photo uploaded">
+                </div>
+                {{/if}}
+                <label class="form-label" for="customFile">upload image</label>
+                <div class="form-outline mb-4">
+                    <input type="file" class="form-control" name="image" id="customFile" />
+                </div>
+
+                <div class="form-outline mb-4">
+
+                    <label for=""></label>
+
+
+
+
+                    <div class="row">
+                        <div class="btn-group" name="test" role="group" aria-label="Basic mixed styles example">
+                        <div class="col-md-2 col-2 ">
+                            <div class="p-3 mb-3 bg-primary text-white">
+                                Primary
+                                <input type="radio" id="primary" name="color" value="primary">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-2 ">
+                            <div class="p-3 mb-3 bg-success text-white">Success
+                                <input type="radio" id="success" name="color" value="success">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-2 ">
+                            <div class="p-3 mb-3 bg-danger text-white">Danger
+                                <input type="radio" id="danger" name="color" value="danger">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-2 ">
+                            <div class="p-3 mb-3 bg-warning text-dark">Warning
+                                <input type="radio" id="warning" name="color" value="warning">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-2 ">
+                            <div class="p-3 mb-3 bg-info text-dark">Info
+                                <input type="radio" id="info" name="color" value="info">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-2 ">
+                            <div class="p-3 mb-3 bg-dark text-white" >dark
+                                <input type="radio" id="dark" name="color" value="dark">
+                            </div>
+                        </div>
+
+                    </div>
+
+                                            
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                    Update
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+    let value = $("#hidden").attr("color");
+    console.log(value)
+    $("#"+value).prop("checked", true);
+  //your code here
+});
+</script>

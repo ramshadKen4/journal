@@ -1,0 +1,57 @@
+<section>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2 box-style">
+            <main role="main" class="inner cover">
+                <h1 class="cover-heading text-center mb-3">{{content.title}}</h1>
+                <img class="img-fluid" src="/images/content/{{content._id}}.jpg" alt="">
+                <p class="lead mt-5">{{content.content}}</p>
+            </main>
+            <div class="col-md-8 offset-md-2 mt-3">
+                <a href="/edit/{{content._id}}" class="btn  btn-secondary">edit</a>
+                <a href="" class="btn  btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    onclick="clickButton({id:`{{content._id}}`,title:`{{content.title}}`})" data-id={{this._id}}>
+                    delete
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    are you want to delete <p id="product_title">items</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="" type="button" id="confirm-link" class="btn btn-danger">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</section>
+<style>
+    .box-style {
+        box-shadow: 0px 15px 25px -4px rgba(150, 150, 150, 1)
+    }
+</style>
+<script type="text/javascript">
+    let clickButton = function (data) {
+        document.getElementById("product_title").innerText = data.title + " ?";
+        document.getElementById("confirm-link").href = "/delete/" + data.id;
+    }
+</script>
